@@ -16,7 +16,7 @@ public class ProductArrayListDao implements ProductDao {
 
     @Override
     public long addProduct(Product product) {
-        product.setId(id.getAndIncrement());
+        product.setId(id.incrementAndGet());
          products.add(product);
          return id.get();
 

@@ -18,15 +18,17 @@ public class SwaggerConfig {
     public Docket buildDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .paths(PathSelectors.ant("/product/*"))
+                .paths(PathSelectors.any())
                 .apis(RequestHandlerSelectors.basePackage("com.ankit.product"))
                 .build()
                 .apiInfo(buildApiInfo());
     }
 
     private ApiInfo buildApiInfo() {
-        return new ApiInfo("Patient Project", "Patient project", "1.0", "",
-                new Contact("Ankit Kapoor", "", "ankitkapoor4986@gmail.com"), "", "",
+        return new ApiInfo("Patient Project", "Patient project", "1.0",
+                "",
+                new Contact("Ankit Kapoor", "", "ankitkapoor4986@gmail.com"),
+                "", "",
                 Collections.emptyList());
     }
 

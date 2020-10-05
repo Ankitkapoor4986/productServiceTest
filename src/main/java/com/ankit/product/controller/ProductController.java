@@ -15,11 +15,11 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/addProduct")
-    public Mono<Long> addProduct(Product product) {
+    public Mono<Long> addProduct(@RequestBody Product product) {
         return productService.addProduct(product);
     }
 
-    @GetMapping("/getProduct/{id}")
+    @GetMapping("/findProduct/{id}")
     public Mono<Product> findProduct(@PathVariable long id) {
         return productService.findProduct(id);
     }

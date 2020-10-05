@@ -12,6 +12,7 @@ public class Product {
     private List<Reviews> reviews;
     private List<KeyAttributes> keyAttributes;
     private double price;
+    private String description;
 
 
 }
