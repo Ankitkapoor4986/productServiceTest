@@ -1,5 +1,6 @@
 package com.ankit.product.controller;
 
+import com.ankit.product.exception.ValuesNotValidException;
 import com.ankit.product.model.Product;
 import com.ankit.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/addProduct")
-    public Mono<Long> addProduct(@RequestBody Product product) {
+    public Mono<Long> addProduct(@RequestBody Product product) throws ValuesNotValidException {
         return productService.addProduct(product);
     }
 

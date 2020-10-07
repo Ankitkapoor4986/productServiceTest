@@ -4,5 +4,5 @@ import com.ankit.product.model.KeyAttributes;
 
 public interface Validator {
 
-    public boolean validate(KeyAttributes keyAttribute);
+     boolean validate(KeyAttributes keyAttribute);
 }

@@ -17,4 +17,8 @@ public enum ValidationTypes {
     ValidationTypes(ValidationComparator validationComparator) {
         this.validatorComparator = validationComparator;
     }
+
+    public ValidationComparator getValidatorComparator() {
+        return validatorComparator;
+    }
 }
