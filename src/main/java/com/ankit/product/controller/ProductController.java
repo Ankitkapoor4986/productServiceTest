@@ -25,13 +25,13 @@ public class ProductController {
         return productService.findProduct(id);
     }
 
-    @RequestMapping(method=RequestMethod.DELETE,path = "/deleteProduct")
-    public Mono<Boolean> deleteProduct(long id) {
+    @RequestMapping(method=RequestMethod.DELETE, path = "/deleteProduct/{id}")
+    public Mono<Boolean> deleteProduct(@PathVariable long id) {
         return productService.deleteProduct(id);
     }
 
     @PutMapping(path = "/updateProduct")
-    public Mono<Boolean> updateProduct(Product product) {
+    public Mono<Boolean> updateProduct(@RequestBody Product product) {
         return productService.updateProduct(product);
     }
 }

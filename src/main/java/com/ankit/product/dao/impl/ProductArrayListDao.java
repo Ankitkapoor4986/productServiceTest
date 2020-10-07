@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class ProductArrayListDao implements ProductDao {
 
+    public static final String PRODUCT_NOT_FOUND = "Product not found";
     private final List<Product> products = new ArrayList<>();
     private AtomicLong id = new AtomicLong(0);
 
@@ -25,7 +26,7 @@ public class ProductArrayListDao implements ProductDao {
     @Override
     public Product findProduct(long id) {
         return products.stream().filter(product -> id == product.getId())
-                .findFirst().orElse(new Product());
+                .findFirst().orElse(new Product(PRODUCT_NOT_FOUND, PRODUCT_NOT_FOUND));
     }
 
     @Override
@@ -35,10 +36,15 @@ public class ProductArrayListDao implements ProductDao {
 
     @Override
     public boolean updateProduct(Product product) {
-        boolean deleteProduct = deleteProduct(product.getId());
-        if (deleteProduct) {
-            addProduct(product);
+        Product productInDb = findProduct(product.getId());
+        if(productInDb.getName().equals(PRODUCT_NOT_FOUND)){
+            return false;
         }
-        return deleteProduct;
+        productInDb.setDescription(product.getDescription());
+        productInDb.setKeyAttributes(product.getKeyAttributes());
+        productInDb.setName(product.getName());
+        productInDb.setPrice(product.getPrice());
+        productInDb.setReviews(product.getReviews());
+        return true;
     }
 }

@@ -2,15 +2,16 @@ package com.ankit.product.validator;
 
 
 import com.ankit.product.model.KeyAttributes;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EnumConfiguredValidator implements Validator {
 
     @Override
     public boolean validate(KeyAttributes keyAttribute) {
 
-        keyAttribute.getValidationTypes().getValidatorComparator().getKeyAttributesBiPredicateValidator()
-                .test(keyAttribute.getConstraintVal(), Integer.valueOf(keyAttribute.getValue()));
+        return keyAttribute.getValidationTypes().executeValidation(keyAttribute);
 
-        return false;
+
     }
 }

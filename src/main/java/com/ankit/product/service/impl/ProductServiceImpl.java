@@ -42,7 +42,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Mono<Product> findProduct(long id) {
-        return Mono.just(productDao.findProduct(id));
+        return Mono.just(productDao.findProduct(id))
+                ;
     }
 
     @Override
